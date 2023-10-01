@@ -1,0 +1,42 @@
+GET http://localhost:3000/peliculas
+
+###
+
+GET http://localhost:3000/example/d
+
+
+### filtrar por Genero
+
+GET http://localhost:3000/peliculas?genero=action
+
+### filtrar por ID
+
+GET http://localhost:3000/peliculas/c8a7d63f-3b04-44d3-9d95-8782fd7dcfaf
+
+### Pasar datos
+
+POST http://localhost:3000/peliculas/
+Content-Type: application/json
+
+{
+    "title": "My New Peli este si",
+    "year": 2023,
+    "director": "Por yo",
+    "duration": 152,
+    "poster": "https://i.ebayimg.com/images/g/yokAAOSw8w1YARbm/s-l1200.jpg",
+    "genre": ["Action", "Crime", "Drama"],
+    "rate": 9.3
+}
+
+###
+PATCH  http://localhost:3000/peliculas/dcdd0fad-a94c-4810-8acc-5f108d3b18c3
+Content-Type: application/json
+
+{
+    "year": 2015
+}
+
+###
+
+DELETE  http://localhost:3000/peliculas/c8a7d63f-3b04-44d3-9d95-8782fd7dcfaf
+

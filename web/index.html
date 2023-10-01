@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probando mi API</title>
+    <style>
+        body {
+            background: #090A23;
+
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+
+        article {
+            width: 320px;
+            height: auto;
+            border: 2px solid gray;
+            border-radius: 20px;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+    </style>
+    <script type="module">
+        // let html = "";
+
+        fetch("http://localhost:3000/peliculas")
+        .then( res => res.json())
+        .then( peliculas => {
+            const html = peliculas.map( peli => {
+                return `
+                <article data-id="${peli.id}">
+                    <h2>${peli.title}</h2>
+                    <img src="${peli.poster}">
+                    <p>${peli.genre}</p>
+                    <button>Eliminar</button>
+                    </article>
+                    `
+                    //convierte el array en un string
+                }).join("");
+            document.querySelector("main").innerHTML = html;
+
+            document.addEventListener("click", e => {
+                if (e.target.matches("button")) {
+                    const article = e.target.closest("article");
+                    const id = article.dataset.id
+
+                    fetch(`http://localhost:3000/peliculas/${id}`, { method: "DELETE"})
+                    .then( res => {
+                        console.log("HAGASFD JKLKLKSLK JSKL")
+                        console.log(res)
+                        console.log(res.message)
+                        console.log(res.ok)
+
+                        if(res.ok) {
+                            article.remove()
+                        }
+                    })
+                }
+            })
+        })
+
+
+
+    </script>
+</head>
+<body>
+    <main>
+        
+    </main>
+</body>
+</html>
