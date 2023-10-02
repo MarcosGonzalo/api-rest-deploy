@@ -21,6 +21,7 @@ app.use(cors({
 }))
 
 app.get("/", (req, res) => { 
+    console.log("YOo estoy funcionando xd")
     res.send("HOMEPAGE")
 })
 
