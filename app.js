@@ -20,6 +20,10 @@ app.use(cors({
 
 }))
 
+app.get("/", (req, res) => { 
+    res.send("HOMEPAGE")
+})
+
 app.get("/peliculas", (req, res) => { 
 
     // res.header("Access-Control-Allow-Origin", "http://localhost:8080")
