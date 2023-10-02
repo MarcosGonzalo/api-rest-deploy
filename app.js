@@ -9,7 +9,7 @@ const app = express();
 
 app.use(express.json())
 
-app.use(cors({
+app.use(cors(/*{
     origin: (origin, callback) => {
         if (origin === "http://localhost:8080" || !origin) {
             return callback(null, true)
@@ -18,7 +18,7 @@ app.use(cors({
         return callback(new Error("Not allowd by cors xd"))
     }
 
-}))
+}*/))
 
 app.get("/", (req, res) => { 
     console.log("YOo estoy funcionando xd")
